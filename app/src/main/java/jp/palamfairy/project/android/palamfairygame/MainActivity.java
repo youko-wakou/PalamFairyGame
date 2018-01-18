@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         petMoveRight.setRepeatMode(Animation.REVERSE);
         petMoveRight.setRepeatCount(Animation.INFINITE);
         petImage.startAnimation(petMoveRight);
-
         toile();
     }
 //    private void petGrouMenu(){
@@ -111,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 //        toile4.setVisibility(View.INVISIBLE);
         int random;
         Random randomInt = new Random();
-        random = randomInt.nextInt(10000)+10000;
+        random = randomInt.nextInt(600000)+60000;
         Timer toileTime = new Timer();
         toileTime.schedule(new TimerTask(){
             @Override
