@@ -24,11 +24,20 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
     private MediaPlayer mBgm;
     private ImageView petImage;
+    private ImageView toile1 = (ImageView)findViewById(R.id.toileA);
+    private ImageView toile2 = (ImageView)findViewById(R.id.toileB);
+    private ImageView toile3 = (ImageView)findViewById(R.id.toileC);
+    private ImageView toile4 = (ImageView)findViewById(R.id.toileD);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        トイレの表示
+        toile1.setVisibility(View.INVISIBLE);
+        toile2.setVisibility(View.INVISIBLE);
+        toile3.setVisibility(View.INVISIBLE);
+        toile4.setVisibility(View.INVISIBLE);
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
@@ -63,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         petMoveRight.setRepeatMode(Animation.REVERSE);
         petMoveRight.setRepeatCount(Animation.INFINITE);
         petImage.startAnimation(petMoveRight);
+
+        toile();
     }
 //    private void petGrouMenu(){
 //
@@ -94,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
         mBgm.start();
     }
     private void toile(){
+//        toile1.setVisibility(View.INVISIBLE);
+//        toile2.setVisibility(View.INVISIBLE);
+//        toile3.setVisibility(View.INVISIBLE);
+//        toile4.setVisibility(View.INVISIBLE);
         int random;
         Random randomInt = new Random();
         random = randomInt.nextInt(10000)+10000;
@@ -101,11 +116,19 @@ public class MainActivity extends AppCompatActivity {
         toileTime.schedule(new TimerTask(){
             @Override
             public void run(){
-
+                for(int i = 1;i<=4;i++) {
+                    String roop = String.valueOf(i);
+                    if(i ==1) {
+                        toile1.setVisibility(View.VISIBLE);
+                    }else if (i == 2){
+                        toile2.setVisibility(View.VISIBLE);
+                    }else if(i == 3){
+                        toile3.setVisibility(View.VISIBLE);
+                    }else if(i == 4){
+                        toile4.setVisibility(View.VISIBLE);
+                    }
+                }
             }
         },random,random);
     }
-
-
-
 }
