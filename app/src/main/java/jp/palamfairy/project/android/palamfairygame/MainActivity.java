@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         mBgm.start();
     }
     private void toile(){
+//        aaaaaa
 //        toile1.setVisibility(View.INVISIBLE);
 //        toile2.setVisibility(View.INVISIBLE);
 //        toile3.setVisibility(View.INVISIBLE);
