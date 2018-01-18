@@ -17,9 +17,6 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView petImage;
-    private TranslateAnimation petMoveRight;
-    private TranslateAnimation petMoveLeft;
     private MediaPlayer mBgm;
 
     @Override
@@ -45,24 +42,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         sound();
-        Log.d("test", "あああああああ");
-        for (int i = 0; i < 1000; i++) {
-//        右に動く
-            Log.d("test", "aaaaaaaaaaa");
-            ImageView petImage = (ImageView) findViewById(R.id.petViewImage);
-            TranslateAnimation petMoveRight = new TranslateAnimation(
-                    TranslateAnimation.RELATIVE_TO_SELF, 0,
-                    TranslateAnimation.ABSOLUTE, 1000,
-                    TranslateAnimation.RELATIVE_TO_SELF, 0,
-                    TranslateAnimation.RELATIVE_TO_SELF, 0
-            );
-            petMoveRight.setDuration(5000);
-            petImage.startAnimation(petMoveRight);
-//        左に動く
-//            TranslateAnimation petMoveLeft = new TranslateAnimation(0, -100, 0, 0);
-//            petMoveRight.setDuration(1000);
-//            petImage.startAnimation(petMoveLeft);
-        }
+        AnimationPet mAnimationPet = new AnimationPet();
+        mAnimationPet.petSlide();
     }
 
 //    @Override
