@@ -14,11 +14,11 @@ public class AnimationPet extends AppCompatActivity {
     private TranslateAnimation petMoveRight;
     private TranslateAnimation petMoveLeft;
 
-    public void petSlide(){
+    public void petSlide(ImageView image){
         for (int i = 0; i < 1000; i++) {
 //        右に動く
+            petImage = image;
             Log.d("test", "aaaaaaaaaaa");
-            ImageView petImage = (ImageView) findViewById(R.id.petViewImage);
             TranslateAnimation petMoveRight = new TranslateAnimation(
                     TranslateAnimation.RELATIVE_TO_SELF, 0,
                     TranslateAnimation.ABSOLUTE, 1000,
