@@ -13,11 +13,17 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
     private MediaPlayer mBgm;
+    private ImageView petImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +45,28 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
         sound();
-        ImageView petImage = (ImageView) findViewById(R.id.petViewImage);
-        AnimationPet mAnimationPet = new AnimationPet();
-        mAnimationPet.petSlide(petImage);
+//        AnimationPet mAnimationPet = new AnimationPet();
+//        mAnimationPet.petSlide(petImage);
+        petImage = (ImageView) findViewById(R.id.petViewImage);
+        TranslateAnimation petMoveRight = new TranslateAnimation(
+                TranslateAnimation.RELATIVE_TO_SELF, -1,
+                TranslateAnimation.RELATIVE_TO_SELF, 1,
+                TranslateAnimation.RELATIVE_TO_SELF, 0,
+                TranslateAnimation.RELATIVE_TO_SELF, 0
+        );
+        petMoveRight.setDuration(5000);
+        petMoveRight.setRepeatMode(Animation.REVERSE);
+        petMoveRight.setRepeatCount(Animation.INFINITE);
+        petImage.startAnimation(petMoveRight);
     }
-
+//    private void petGrouMenu(){
+//
+//    }
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
@@ -74,5 +93,19 @@ public class MainActivity extends AppCompatActivity {
         mBgm = MediaPlayer.create(this, R.raw.bgm);
         mBgm.start();
     }
+    private void toile(){
+        int random;
+        Random randomInt = new Random();
+        random = randomInt.nextInt(10000)+10000;
+        Timer toileTime = new Timer();
+        toileTime.schedule(new TimerTask(){
+            @Override
+            public void run(){
+
+            }
+        },random,random);
+    }
+
+
 
 }
