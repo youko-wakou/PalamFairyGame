@@ -118,17 +118,20 @@ public class MainActivity extends AppCompatActivity {
             public void run(){
                 for(int i = 1;i<=4;i++) {
                     String roop = String.valueOf(i);
-                    if(i ==1) {
+                    if(roop =="1") {
                         toile1.setVisibility(View.VISIBLE);
-                    }else if (i == 2){
+                    }else if (roop == "2"){
                         toile2.setVisibility(View.VISIBLE);
-                    }else if(i == 3){
+                    }else if(roop == "3"){
                         toile3.setVisibility(View.VISIBLE);
-                    }else if(i == 4){
+                    }else if(roop == "4"){
                         toile4.setVisibility(View.VISIBLE);
                     }
                 }
             }
         },random,random);
     }
+
+
+
 }
