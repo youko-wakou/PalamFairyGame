@@ -4,6 +4,7 @@ import android.media.AudioManager;
 import android.media.MediaActionSound;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.opengl.Matrix;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,7 +17,11 @@ import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -24,24 +29,36 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
     private MediaPlayer mBgm;
     private ImageView petImage;
-    private ImageView toile1 = (ImageView)findViewById(R.id.toileA);
-    private ImageView toile2 = (ImageView)findViewById(R.id.toileB);
-    private ImageView toile3 = (ImageView)findViewById(R.id.toileC);
-    private ImageView toile4 = (ImageView)findViewById(R.id.toileD);
-
+//    private ImageView toileA;
+//    private ImageView toileB;
+//    private ImageView toileC;
+//    private ImageView toileD;
+    private LinearLayout linearlayout;
+    private ImageView toileImg;
+//    private Matrix matrix;
+//    private String roop;
+//    private PetSub petsub = new PetSub();
+//    private ArrayList<String> toileList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        トイレの表示
-        toile1.setVisibility(View.INVISIBLE);
-        toile2.setVisibility(View.INVISIBLE);
-        toile3.setVisibility(View.INVISIBLE);
-        toile4.setVisibility(View.INVISIBLE);
+////        トイレのビュー取得
+//        toileA = (ImageView)findViewById(R.id.toileA);
+//        toileB = (ImageView)findViewById(R.id.toileB);
+//        toileC = (ImageView)findViewById(R.id.toileC);
+//        toileD = (ImageView)findViewById(R.id.toileD);
+//        //        トイレの表示
+//        toileA.setVisibility(View.INVISIBLE);
+//        toileB.setVisibility(View.INVISIBLE);
+//        toileC.setVisibility(View.INVISIBLE);
+//        toileD.setVisibility(View.INVISIBLE);
+
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
-
+        linearlayout = new LinearLayout(this);
+        setContentView(linearlayout);
 
 //        ボタン
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -103,6 +120,16 @@ public class MainActivity extends AppCompatActivity {
         mBgm = MediaPlayer.create(this, R.raw.bgm);
         mBgm.start();
     }
+//
+//    private void setToileList(String value){
+////        mToileKey = key;
+//        mToileValue = value;
+//        toileList.add(mToileValue);
+//    }
+//    private ArrayList<String> getToileList(){
+//        return toileList;
+//    }
+//    ★
     private void toile(){
 //        aaaaaa
 //        toile1.setVisibility(View.INVISIBLE);
@@ -116,22 +143,16 @@ public class MainActivity extends AppCompatActivity {
         toileTime.schedule(new TimerTask(){
             @Override
             public void run(){
-                for(int i = 1;i<=4;i++) {
-                    String roop = String.valueOf(i);
-                    if(roop =="1") {
-                        toile1.setVisibility(View.VISIBLE);
-                    }else if (roop == "2"){
-                        toile2.setVisibility(View.VISIBLE);
-                    }else if(roop == "3"){
-                        toile3.setVisibility(View.VISIBLE);
-                    }else if(roop == "4"){
-                        toile4.setVisibility(View.VISIBLE);
-                    }
-                }
+                toileImg = new ImageView(getApplicationContext());
+                toileImg.setImageResource(R.drawable.unti);
+                toileImg.setMaxHeight(90);
+                toileImg.setMaxWidth(90);
+                linearlayout.addView(toileImg);
             }
-        },random,random);
+        },
+                100
+                ,
+                100
+        );
     }
-
-
-
 }
